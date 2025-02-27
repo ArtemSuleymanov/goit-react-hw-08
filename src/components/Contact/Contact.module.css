@@ -1,0 +1,21 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  background: #333;
+  border-radius: 6px;
+}
+
+.button {
+  padding: 8px;
+  background: linear-gradient(135deg, #aaff00, #88cc00);
+  border: none;
+  border-radius: 6px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #88cc00, #aaff00);
+}

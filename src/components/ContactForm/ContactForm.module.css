@@ -1,0 +1,42 @@
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+  background: #2a2a2a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input {
+  padding: 10px;
+  border: 1px solid #444;
+  background: #333;
+  color: white;
+  border-radius: 6px;
+}
+
+.button {
+  margin-top: 10px;
+  padding: 10px;
+  background: linear-gradient(135deg, #aaff00, #88cc00);
+  border: none;
+  border-radius: 6px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.button:hover {
+  background: linear-gradient(135deg, #88cc00, #aaff00);
+}
+
+.txt {
+  display: flex;
+}
