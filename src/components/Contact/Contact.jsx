@@ -2,7 +2,7 @@ import s from "./Contact.module.css";
 import { RiContactsFill } from "react-icons/ri";
 import { BsTelephoneFill } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contactsOps.js";
+import { deleteContact } from "../../redux/contacts/contactsOps";
 
 const Contact = ({ id, name, number }) => {
   const dispatch = useDispatch();
