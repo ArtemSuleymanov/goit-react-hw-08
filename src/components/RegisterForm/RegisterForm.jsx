@@ -29,7 +29,7 @@ const RegisterForm = () => {
     dispatch(register(values))
       .unwrap()
       .then((response) => {
-        toast.success(`Welcome, ${response.name}`);
+        toast.success(`Welcome, ${response.user.name}`);
         resetForm();
       })
       .catch(() => {

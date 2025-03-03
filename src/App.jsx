@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { lazy, useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/selectors";
 import { refreshUser } from "./redux/auth/operations";
 import { Route, Routes } from "react-router-dom";
@@ -26,41 +26,43 @@ const App = () => {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<HomePage />} />
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<RegisterPage />}
-              isLoggedIn={isLoggedIn}
-            />
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute
-              redirectTo="/contacts"
-              component={<LoginPage />}
-              isLoggedIn={isLoggedIn}
-            />
-          }
-        />
-        <Route
-          path="/contacts"
-          element={
-            <PrivateRoute
-              redirectTo="/login"
-              component={<ContactsPage />}
-              isLoggedIn={isLoggedIn}
-            />
-          }
-        />
-      </Route>
-    </Routes>
+    <Suspense fallback={<p>Loading...</p>}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<RegisterPage />}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute
+                redirectTo="/contacts"
+                component={<LoginPage />}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute
+                redirectTo="/login"
+                component={<ContactsPage />}
+                isLoggedIn={isLoggedIn}
+              />
+            }
+          />
+        </Route>
+      </Routes>
+    </Suspense>
   );
 };
 

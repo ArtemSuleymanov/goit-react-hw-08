@@ -1,7 +1,7 @@
 import s from "./RegisterPage.module.css";
-import RegisterForm from "..//..//components/RegisterForm/RegisterForm";
+import RegisterForm from "../../components/RegisterForm/RegisterForm";
 
-const Register = () => {
+const RegisterPage = () => {
   return (
     <div className={s.wrapper}>
       <h2 className={s.title}>Register</h2>
@@ -10,4 +10,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterPage;
