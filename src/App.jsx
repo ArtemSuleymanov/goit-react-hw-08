@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { lazy, Suspense, useEffect } from "react";
-import { selectIsLoggedIn, selectIsRefreshing } from "./redux/auth/selectors";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 import { refreshUser } from "./redux/auth/operations";
 import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
@@ -15,7 +15,6 @@ const ContactsPage = lazy(() => import("./pages/Contacts/ContactsPage"));
 const App = () => {
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
-  const isLoggedIn = useSelector(selectIsLoggedIn);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -30,34 +29,31 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
+
           <Route
             path="/register"
             element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<RegisterPage />}
-                isLoggedIn={isLoggedIn}
-              />
+              <RestrictedRoute redirectTo="/contacts">
+                <RegisterPage />
+              </RestrictedRoute>
             }
           />
+
           <Route
             path="/login"
             element={
-              <RestrictedRoute
-                redirectTo="/contacts"
-                component={<LoginPage />}
-                isLoggedIn={isLoggedIn}
-              />
+              <RestrictedRoute redirectTo="/contacts">
+                <LoginPage />
+              </RestrictedRoute>
             }
           />
+
           <Route
             path="/contacts"
             element={
-              <PrivateRoute
-                redirectTo="/login"
-                component={<ContactsPage />}
-                isLoggedIn={isLoggedIn}
-              />
+              <PrivateRoute redirectTo="/login">
+                <ContactsPage />
+              </PrivateRoute>
             }
           />
         </Route>
