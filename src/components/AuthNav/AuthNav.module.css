@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  background-color: #121212;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.link {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #aaff00, #00b300);
+  padding: 12px 25px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+}
+
+.link:hover {
+  background: linear-gradient(135deg, #ffcc00, #b3e600);
+  transform: scale(1.05);
+}
+
+.link:active {
+  background: linear-gradient(135deg, #66cc00, #b3e600);
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+}
+
+.iconContainer svg {
+  margin-right: 10px;
+}

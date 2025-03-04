@@ -1,9 +1,9 @@
-import styles from "./HomePage.module.css";
+import s from "./HomePage.module.css";
 
 export default function Home() {
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Welcome to the phone book </h1>
+    <div className={s.container}>
+      <h1 className={s.title}>Your Contacts Are Just One Click Away</h1>
     </div>
   );
 }
