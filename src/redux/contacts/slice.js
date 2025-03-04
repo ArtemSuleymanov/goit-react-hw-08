@@ -1,6 +1,7 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { addContact, deleteContact, fetchContacts } from "./operations";
 import { selectNameFilter } from "../filter/slice";
+import { logout } from "../auth/operations";
 
 const initialState = {
   items: [],
@@ -12,13 +13,6 @@ const initialState = {
 const contactsSlice = createSlice({
   name: "contacts",
   initialState,
-  reducers: {
-    clearContacts(state) {
-      state.items = [];
-      state.loading = false;
-      state.error = null;
-    },
-  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
@@ -56,6 +50,11 @@ const contactsSlice = createSlice({
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.items = [];
+        state.loading = false;
+        state.error = null;
       });
   },
 });

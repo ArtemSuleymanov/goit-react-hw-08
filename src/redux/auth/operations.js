@@ -1,6 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import { clearContacts } from "../contacts/slice";
 import { fetchContacts } from "../contacts/operations";
 
 const authInstance = axios.create({
@@ -21,10 +20,7 @@ export const register = createAsyncThunk(
     try {
       const { data } = await authInstance.post("/users/signup", credentials);
       setAuthHeader(data.token);
-
-      thunkAPI.dispatch(clearContacts());
       thunkAPI.dispatch(fetchContacts());
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -38,10 +34,7 @@ export const login = createAsyncThunk(
     try {
       const { data } = await authInstance.post("/users/login", credentials);
       setAuthHeader(data.token);
-
-      thunkAPI.dispatch(clearContacts());
       thunkAPI.dispatch(fetchContacts());
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
