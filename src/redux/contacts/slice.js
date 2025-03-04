@@ -2,9 +2,23 @@ import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { addContact, deleteContact, fetchContacts } from "./operations";
 import { selectNameFilter } from "../filter/slice";
 
+const initialState = {
+  items: [],
+  loading: false,
+  error: null,
+  filter: "",
+};
+
 const contactsSlice = createSlice({
   name: "contacts",
-  initialState: { items: [], loading: false, error: null, filter: "" },
+  initialState,
+  reducers: {
+    clearContacts(state) {
+      state.items = [];
+      state.loading = false;
+      state.error = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchContacts.pending, (state) => {
@@ -45,6 +59,8 @@ const contactsSlice = createSlice({
       });
   },
 });
+
+export const { clearContacts } = contactsSlice.actions;
 
 export const selectContacts = (state) => state.contacts.items;
 export const selectLoading = (state) => state.contacts.loading;
